@@ -12,11 +12,11 @@ call vundle#begin()
 " abolish
 Plugin 'tpope/vim-abolish'
 
-" vim buffer line
-Plugin 'bling/vim-bufferline'
+" " vim buffer line
+" Plugin 'bling/vim-bufferline'
 
-" buffer as tabs
-Plugin 'ap/vim-buftabline'
+" " buffer as tabs
+" Plugin 'ap/vim-buftabline'
 
 " mark management
 Plugin 'jeetsukumaran/vim-markology'
@@ -145,7 +145,7 @@ let g:mapleader = ","
 nnoremap <leader>sv :source ~/.vimrc<return>
 
 " Quickly open ~/.vimrc
-nnoremap <leader>rc :vs ~/.vimrc<return>
+nnoremap <leader>rc :e ~/.vimrc<return>
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -155,6 +155,9 @@ nmap <leader>w :w!<cr>
 
 " Fast quit
 nmap <leader>q :q<cr>
+
+" Fast quit all
+nmap <leader>x :qa<cr>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
@@ -251,6 +254,7 @@ syntax enable
 set background=dark
 let g:solarized_termcolors=256
 colorscheme wombat256
+let g:airline_theme='base16_ashes'
 
 " colorscheme lucius
 
@@ -286,6 +290,9 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Change the default mapping
 let g:ctrlp_map = '<C-f>'
 let g:ctrlp_cmd = 'CtrlP .'
+map ,p :CtrlP .<cr>
+map ,ba :CtrlPBuffer<cr>
+
 
 " Show hidden files too
 let g:ctrlp_show_hidden = 1
@@ -302,7 +309,24 @@ let g:ctrlp_custom_ignore = {
 "
 " Toggle NERDTree shortcut
 map ,nt :NERDTreeToggle<CR>
+map ,n :NERDTreeFind<CR>
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" quickly buffer
+map ,bd :bd<cr>
+map ,bo :%bd \| e#<cr>
+map ,bn :bn<cr>
+map ,bp :bp<cr>
+map ,bf :bf<cr>
+map ,bl :bl<cr>
+map ,bb :b#<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" quickly split windows
+map ,vs :vs<cr>
+map ,sp :sp<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline Configuration
@@ -313,6 +337,15 @@ set laststatus=2
 " Auto populate the g:airline_symbols dictionary
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
+let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#buffer_idx_mode = 1
+" let g:airline#extensions#tabline#left_sep = '▶'
+" let g:airline#extensions#tabline#left_alt_sep = '◀'
+
+map ,rf :AirlineRefresh<cr>
+
+set encoding=utf-8
+set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in the name properly
 
 
 
