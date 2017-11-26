@@ -1,0 +1,22 @@
+[color]
+	ui = true
+[user]
+	name = noo.thaithinh
+	email = noo.thaithinh@gmail.com
+[alias]
+	tree = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%an)%C(reset) %C(dim white)[%ar]%C(reset) %C(white)%s%C(reset) %C(auto)%d%C(reset)'
+	d = difftool
+    m = mergetool
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool "bc3"]
+	trustExitCode = true
+[mergetool "bcompare"]
+	trustExitCode = true
+[difftool]
+	prompt = false
+[mergetool]
+	prompt = false
