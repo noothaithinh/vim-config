@@ -9,6 +9,12 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" quick creat file
+Plugin 'duggiefresh/vim-easydir'
+
+" vim dirdiff
+Plugin 'DirDiff.vim'
+
 " abolish
 Plugin 'tpope/vim-abolish'
 
@@ -40,8 +46,8 @@ Plugin 'YankRing.vim'
 " CtrlP fuzzy finder
 Plugin 'ctrlpvim/ctrlp.vim'
 
-" Multiple cursors
-Plugin 'terryma/vim-multiple-cursors'
+" " Multiple cursors
+" Plugin 'terryma/vim-multiple-cursors'
 
 " vim-airline
 Plugin 'vim-airline/vim-airline'
@@ -137,6 +143,23 @@ filetype plugin indent on
 " Sets how many lines of history VIM has to remember
 set history=700
 
+
+
+
+
+
+
+" " Enable cursorline
+" set cursorline
+
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  " au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
+  au WinLeave * setlocal nocursorline
+  " au WinLeave * setlocal nocursorcolumn
+augroup END
+
 " With a map leader it's possible to do extra key combinations
 let mapleader = ","
 let g:mapleader = ","
@@ -188,8 +211,8 @@ set textwidth=0
 set wrapmargin=0
 
 " Spell check commit messages, text, and markdown files
-autocmd BufNewFile,BufRead *.md setlocal spell
-autocmd BufNewFile,BufRead *.txt setlocal spell
+" autocmd BufNewFile,BufRead *.md setlocal spell
+" autocmd BufNewFile,BufRead *.txt setlocal spell
 autocmd BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
 
 " Open split windows below / to the right
@@ -251,10 +274,10 @@ set t_Co=256
 syntax enable
 
 " Set the color scheme
-set background=dark
+" set background=dark
 let g:solarized_termcolors=256
-colorscheme wombat256
-let g:airline_theme='base16_ashes'
+" colorscheme wombat256
+" let g:airline_theme='base16_ashes'
 
 " colorscheme lucius
 
@@ -309,7 +332,7 @@ let g:ctrlp_custom_ignore = {
 "
 " Toggle NERDTree shortcut
 map ,nt :NERDTreeToggle<CR>
-map ,n :NERDTreeFind<CR>
+map ,nf :NERDTreeFind<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -324,10 +347,20 @@ map ,bb :b#<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" copy to clipboard
+map ,y "+y
+map ,d "+d
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " quickly split windows
 map ,vs :vs<cr>
 map ,sp :sp<cr>
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" save this sessions
+map ,ss :mks! ~/.session.vim<cr>
+map ,sl :source ~/.session.vim<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline Configuration
 "
@@ -346,6 +379,9 @@ map ,rf :AirlineRefresh<cr>
 
 set encoding=utf-8
 set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in the name properly
+" set guifont=Ubuntu\ Mono\ derivative\ Powerline
+
+
 
 
 
